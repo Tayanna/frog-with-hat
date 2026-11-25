@@ -3,58 +3,82 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Pond — Frog With Hat</title>
+<title>The Pond — Frok With Hat</title>
+<meta name="description" content="One frok, many hats. Dive into the lore">
+<meta name="theme-color" content="#0c2e2a">
+<link rel="icon" href="assets/logohat.webp" type="image/webp">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tayanna.github.io/frog-with-hat/">
+<meta property="og:title" content="One frok, many hats">
+<meta property="og:description" content="Dive into the lore">
+<meta property="og:image" content="https://tayanna.github.io/frog-with-hat/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="One frok, many hats">
+<meta name="twitter:description" content="Dive into the lore">
+<meta name="twitter:image" content="https://tayanna.github.io/frog-with-hat/assets/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,500..800,100&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --surface:#2b4a2c; --mid:#17463d; --deep:#0c2e2a; --abyss:#051612;
-  --foam:#eef3e2; --lily:#eda3b6; --straw:#e8c98a; --algae:#9fbf6a;
+  --foam:#eef3e2; --lily:#ffd35c; --straw:#ffd35c; --algae:#9fbf6a;
 }
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth}
-body{margin:0;color:var(--foam);font:17px/1.6 "Inter Tight",system-ui,sans-serif;overflow-x:clip;
+body{margin:0;color:var(--foam);font:17px/1.6 "Baloo 2",system-ui,sans-serif;overflow-x:clip;
   background:linear-gradient(180deg,var(--surface) 0%,var(--mid) 28%,var(--deep) 62%,var(--abyss) 100%)}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;font-variation-settings:"SOFT" 100;font-weight:700;margin:0;line-height:.88;letter-spacing:-.01em;text-wrap:balance}
+h1,h2,h3{font-family:"Baloo 2",system-ui,sans-serif;font-weight:800;margin:0;line-height:.72;letter-spacing:-.01em;text-wrap:balance}
+h1 em,h2 em,h3 em{font-style:normal}
 h3{line-height:1.05}
 a{color:inherit}
 .wrap{max-width:1280px;margin:0 auto;padding:0 max(5vw,20px)}
-.eyebrow{font:600 12px "Inter Tight",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--algae)}
 .btn{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 24px;border-radius:999px;border:1.5px solid var(--foam);
-  font:600 15px "Inter Tight",sans-serif;text-decoration:none;color:var(--foam);background:transparent;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+  font:600 15px "Baloo 2",sans-serif;text-decoration:none;color:var(--foam);background:transparent;cursor:pointer;transition:background .2s,color .2s,transform .2s}
 .btn:hover{background:var(--foam);color:var(--deep);transform:translateY(-2px)}
-.btn.lily{background:var(--lily);border-color:var(--lily);color:#2a1218}
+.btn.lily{background:var(--lily);border-color:var(--lily);color:#1d1606}
 .btn.lily:hover{background:var(--foam);border-color:var(--foam)}
 .btn:focus-visible{outline:2px solid var(--straw);outline-offset:3px}
 
 /* NAV */
 nav{position:fixed;inset:0 0 auto;z-index:40;transition:background .3s}
-nav.solid{background:rgba(5,22,18,.55);backdrop-filter:blur(12px)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:74px}
-.logo{font:700 22px Fraunces,serif;font-variation-settings:"SOFT" 100;text-decoration:none;display:flex;gap:10px;align-items:center}
-.logo img{width:40px}
 nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
 nav ul a{font-weight:600;font-size:14px;text-decoration:none;opacity:.85}
 nav ul a:hover{opacity:1;color:var(--straw)}
 
 /* DEPTH METER */
-.depth{position:fixed;right:22px;top:50%;translate:0 -50%;z-index:30;display:flex;align-items:center;gap:12px;pointer-events:none}
-.depth .track{position:relative;width:2px;height:46vh;background:rgba(238,243,226,.2);border-radius:2px}
-.depth .fill{position:absolute;left:0;top:0;width:100%;background:var(--straw);border-radius:2px}
-.depth .dot{position:absolute;left:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--straw);box-shadow:0 0 0 5px rgba(232,201,138,.2)}
-.depth .read{font:700 13px "Inter Tight",sans-serif;letter-spacing:.06em;writing-mode:vertical-rl;transform:rotate(180deg);opacity:.85;white-space:nowrap}
+.depth{position:fixed;right:26px;top:50%;translate:0 -50%;z-index:30;pointer-events:none;opacity:0;transform:translateX(14px);transition:opacity .5s,transform .5s}
+.depth.show{opacity:1;transform:none}
+.depth .track{position:relative;width:24px;height:52vh}
+.depth .line{position:absolute;left:50%;top:0;bottom:0;width:0;border-left:1.5px dashed rgba(238,243,226,.28)}
+.depth .fill{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;background:linear-gradient(rgba(255,211,92,.15),var(--straw));border-radius:2px}
+.depth .float{position:absolute;left:50%;top:-14px;width:12px;height:16px;margin-left:-6px;border-radius:50% 50% 45% 45%;background:linear-gradient(#ffd35c 0 50%,#eef3e2 50%);box-shadow:0 2px 6px rgba(0,0,0,.35);animation:floatbob 2.6s ease-in-out infinite}
+@keyframes floatbob{50%{transform:translateY(-3px) rotate(4deg)}}
+.depth .tick{position:absolute;right:50%;height:1.5px;width:6px;margin-right:4px;background:rgba(238,243,226,.3);border-radius:1px;transition:background .3s,width .3s}
+.depth .tick.major{width:11px}
+.depth .tick.on{background:var(--straw)}
+.depth .tick b{position:absolute;right:16px;top:50%;translate:0 -50%;font:700 11px "Baloo 2",sans-serif;color:rgba(238,243,226,.45);white-space:nowrap;transition:color .3s,opacity .3s}
+.depth .tick.on b{color:var(--straw)}
+.depth .tick.near b{opacity:0}
+.depth .dot{position:absolute;left:50%;top:0;width:54px;margin:-20px 0 0 -27px}
+.depth .dot img{display:block;width:100%;filter:drop-shadow(0 4px 6px rgba(0,0,0,.45));transform-origin:50% 20%;will-change:transform}
+.depth .dtag{position:absolute;right:62px;top:50%;translate:0 -50%;text-align:right;white-space:nowrap;line-height:1}
+.depth .dtag b{font:800 26px/1 "Baloo 2",sans-serif;color:var(--foam);font-variant-numeric:tabular-nums}
+.depth .dtag small{font:700 14px "Baloo 2",sans-serif;color:var(--straw);margin-left:2px}
+.depth .dtag i{display:block;font:600 12px/1 "Baloo 2",sans-serif;font-style:normal;color:rgba(238,243,226,.65);margin-top:4px;letter-spacing:.04em}
+.depth .bub{position:absolute;left:50%;border-radius:50%;border:1px solid rgba(238,243,226,.55);background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.6),rgba(255,255,255,0) 45%);pointer-events:none}
 
 /* BUBBLES CANVAS */
-#bubbles{position:fixed;inset:0;z-index:20;pointer-events:none}
+#bubbles{position:fixed;inset:0;z-index:1;pointer-events:none}   /* behind the content, above the water photos */
 
 /* HERO — the surface */
-.hero{position:relative;height:100svh;min-height:620px;overflow:hidden}
+.hero{position:relative;height:100svh;min-height:620px;overflow:hidden;z-index:auto}
 .stage{position:absolute;inset:0;overflow:hidden}
 .scene{position:absolute;inset:-3%;will-change:transform}
 .scene img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;display:block}
 .vignette{position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(10,25,15,.5) 0%,transparent 18%,transparent 55%,rgba(23,70,61,.0) 70%,var(--surface) 100%),
+  background:linear-gradient(180deg,rgba(10,25,15,.5) 0%,transparent 18%,transparent 70%,rgba(10,25,15,.35) 100%),
              linear-gradient(90deg,rgba(10,25,15,.55) 0%,transparent 40%)}
 .frog{position:absolute;left:0;top:0;transform-origin:50% 100%;cursor:pointer;will-change:transform;z-index:2}
 .frog-in{position:relative;width:100%;height:100%;transform-origin:50% 100%}
@@ -65,124 +89,192 @@ nav ul a:hover{opacity:1;color:var(--straw)}
 @keyframes rip{from{width:20px;height:6px;opacity:1}to{width:420px;height:110px;opacity:0}}
 .hop{animation:hop .55s cubic-bezier(.3,.7,.3,1)}
 @keyframes hop{0%{transform:scale(1,1)}15%{transform:scale(1.08,.88)}45%{transform:translateY(-22%) scale(.94,1.08)}75%{transform:translateY(0) scale(1.06,.92)}100%{transform:scale(1,1)}}
-.bubble-say{position:absolute;z-index:4;padding:8px 14px;background:var(--foam);color:var(--deep);font:600 14px "Inter Tight",sans-serif;border-radius:18px;white-space:nowrap;pointer-events:none;opacity:0;transform:translate(-50%,-100%) scale(.8);transition:opacity .25s,transform .25s}
+.bubble-say{position:absolute;z-index:4;padding:8px 14px;background:var(--foam);color:var(--deep);font:600 14px "Baloo 2",sans-serif;border-radius:18px;white-space:nowrap;pointer-events:none;opacity:0;transform:translate(-50%,-100%) scale(.8);transition:opacity .25s,transform .25s}
 .bubble-say.on{opacity:1;transform:translate(-50%,-100%) scale(1)}
 .hero-copy{position:absolute;left:0;right:0;bottom:0;z-index:5;padding-bottom:clamp(60px,10vh,110px)}
 .hero h1{font-size:clamp(54px,7vw,112px);margin:12px 0 0}
-.hero h1 em{font-style:italic;color:var(--straw)}
+.hero h1 em{font-style:normal;color:var(--straw)}
 .hero p{margin:16px 0 24px;max-width:36ch;font-size:18px;opacity:.92}
-.cta{display:flex;gap:12px;flex-wrap:wrap}
-.dive-hint{position:absolute;left:50%;bottom:22px;translate:-50% 0;z-index:5;font:600 12px "Inter Tight",sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:.75;display:flex;flex-direction:column;align-items:center;gap:6px}
-.dive-hint i{width:2px;height:28px;background:linear-gradient(var(--foam),transparent);animation:drip 1.6s ease-in-out infinite}
-@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* WATER SURFACE LINE */
-.surface{position:relative;height:120px;margin-top:-1px}
-.surface svg{position:absolute;inset:0;width:100%;height:100%}
-.surface .w1{animation:sway 7s ease-in-out infinite alternate}
-.surface .w2{animation:sway 9s ease-in-out infinite alternate-reverse;opacity:.5}
-@keyframes sway{to{transform:translateX(-120px)}}
+
 
 /* LIGHT RAYS */
-.rays{position:absolute;inset:0;overflow:hidden;pointer-events:none;mix-blend-mode:screen}
-.rays i{position:absolute;top:-10%;width:14vw;height:120%;background:linear-gradient(180deg,rgba(220,255,200,.16),transparent 75%);transform-origin:top center;filter:blur(8px);animation:ray 9s ease-in-out infinite alternate}
-.rays i:nth-child(1){left:8%;rotate:14deg}
-.rays i:nth-child(2){left:34%;rotate:8deg;width:8vw;animation-delay:-3s}
-.rays i:nth-child(3){left:58%;rotate:-6deg;animation-delay:-5s}
-.rays i:nth-child(4){left:80%;rotate:-14deg;width:9vw;animation-delay:-1s}
-@keyframes ray{from{opacity:.4;transform:skewX(-4deg)}to{opacity:1;transform:skewX(4deg)}}
+
 
 /* ZONES */
 .zone{position:relative;padding:clamp(70px,9vw,130px) 0}
-.zone-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 64px;align-items:end;margin-bottom:56px}
-.zone-head .eyebrow b{color:var(--straw)}
 h2{font-size:clamp(46px,6vw,92px)}
-h2 em{font-style:italic;color:var(--lily)}
-.zone-head p{margin:0;max-width:46ch;opacity:.85}
+h2 em{color:var(--lily)}
 
 /* JAR */
 .find{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:44px;align-items:start}
-.jar{position:relative;padding:58px 26px 30px;border-radius:44px 44px 70px 70px;
-  background:linear-gradient(100deg,rgba(255,255,255,.12),rgba(255,255,255,.03) 30%,rgba(255,255,255,.02) 70%,rgba(255,255,255,.14));
-  border:2px solid rgba(220,245,230,.35);box-shadow:inset 0 0 60px rgba(160,230,200,.12),0 60px 80px -40px rgba(0,0,0,.6);animation:float 7s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-10px) rotate(-.4deg)}}
-.jar::before{content:"";position:absolute;left:50%;top:-26px;translate:-50% 0;width:46%;height:40px;border-radius:12px 12px 6px 6px;background:linear-gradient(180deg,#b88b5a,#8a6238);box-shadow:inset 0 -4px 0 rgba(0,0,0,.2)}
-.jar::after{content:"";position:absolute;left:30px;top:70px;width:16px;height:60%;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,0));pointer-events:none;z-index:3}
-.paper{position:relative;height:min(72vh,780px);background:#f4f0e2;border-radius:6px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.08);transform:rotate(-.6deg)}
-.paper iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.paper::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(23,70,61,.0) 70%,rgba(23,70,61,.18)),radial-gradient(120% 80% at 50% 0,transparent 60%,rgba(120,100,50,.18))}
-.loading{position:absolute;inset:0;display:grid;place-items:center;background:#f4f0e2;color:var(--deep);font:600 22px Fraunces,serif;font-style:italic;transition:opacity .4s;z-index:2}
+.loading{position:absolute;inset:0;display:grid;place-items:center;background:#f4f0e2;color:var(--deep);font:600 22px "Baloo 2",sans-serif;transition:opacity .4s;z-index:2}
 .loading.off{opacity:0;pointer-events:none}
-.jar-label{margin:18px auto 0;width:max-content;max-width:100%;padding:8px 18px;border-radius:999px;background:rgba(5,22,18,.5);font-size:14px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center}
-.jar-label a{color:var(--straw);font-weight:600;text-decoration:none}
-.tags{display:grid;gap:18px;position:sticky;top:110px}
-.tag{position:relative;padding:20px 20px 18px;background:rgba(238,243,226,.07);border:1px solid rgba(238,243,226,.16);border-radius:18px;backdrop-filter:blur(4px);animation:bob 6s ease-in-out infinite}
-.tag:nth-child(2){animation-delay:-2s}.tag:nth-child(3){animation-delay:-4s}
-@keyframes bob{50%{transform:translateY(-6px)}}
-.tag::before{content:"";position:absolute;left:24px;top:-28px;width:1.5px;height:28px;background:rgba(238,243,226,.3)}
-.tag .eyebrow{font-size:10px;margin-bottom:6px}
-.tag h3{font-size:22px;margin-bottom:6px}
-.tag p{margin:0;font-size:15px;opacity:.85}
 
 /* BOTTOM — treasures */
 .bottom{padding-bottom:0}
-.bed{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;padding-bottom:60px}
-.gem{position:relative;margin:0;cursor:zoom-in;animation:drift 8s ease-in-out infinite}
-.gem:nth-child(2n){margin-top:60px;animation-delay:-2s}
-.gem:nth-child(3n){animation-delay:-5s}
-@keyframes drift{50%{transform:translateY(-8px) rotate(.6deg)}}
-.shell{aspect-ratio:1;border-radius:46% 54% 48% 52% / 52% 46% 54% 48%;overflow:hidden;background:rgba(10,29,28,.45);backdrop-filter:blur(6px);border:1.5px solid rgba(238,243,226,.2);display:grid;place-items:center;transition:border-radius .6s,transform .4s}
-.gem:hover .shell{border-radius:38%;transform:scale(1.03)}
-.shell img{width:100%;height:100%;object-fit:cover}
-.shell img.cut{object-fit:contain;padding:10%}
-.shell span{font:600 18px Fraunces,serif;font-style:italic;opacity:.5;text-align:center;padding:10px}
-.gem figcaption{margin-top:12px;font-size:14px;opacity:.75;text-align:center}
-.seabed{position:absolute;left:0;right:0;bottom:0;height:200px;pointer-events:none}
-.seabed svg{width:100%;height:100%}
-.weed{transform-origin:bottom center;animation:weed 5s ease-in-out infinite alternate}
-.weed:nth-of-type(2n){animation-duration:6.5s}
-.weed:nth-of-type(3n){animation-duration:4.2s;animation-direction:alternate-reverse}
-@keyframes weed{from{transform:skewX(-6deg)}to{transform:skewX(6deg)}}
-.addrow{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;position:relative;z-index:2;padding-bottom:clamp(60px,10vw,160px)}
-.addrow p{margin:0;font-size:14px;opacity:.6}
 label.btn input{display:none}
 
 /* THE DEEP */
 footer{position:relative;background:var(--abyss);padding:clamp(110px,13vw,190px) 0 40px;text-align:center;overflow:hidden}
-footer .sinker{position:absolute;left:50%;top:0;width:150px;translate:-50% 0;animation:sink 14s linear infinite;opacity:.95}
-@keyframes sink{0%{transform:translate(-30px,-40px) rotate(-12deg)}25%{transform:translate(30px,60px) rotate(10deg)}50%{transform:translate(-30px,160px) rotate(-10deg)}75%{transform:translate(30px,260px) rotate(8deg)}100%{transform:translate(-20px,360px) rotate(-6deg);opacity:0}}
+footer .sinker{position:absolute;left:50%;top:170px;width:150px;margin-left:-75px;opacity:0;will-change:transform,opacity}
+@media(max-width:600px){footer .sinker{top:120px;width:120px;margin-left:-60px}}
 footer h2{font-size:clamp(60px,10vw,150px);margin-top:120px}
-footer p{max-width:42ch;margin:18px auto 32px;opacity:.75}
+footer p{max-width:42ch;margin:24px auto 26px;opacity:.8;font-size:18px;line-height:1.35}
 .socials{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
 .glow{position:absolute;left:50%;bottom:-30%;width:80vw;height:60vh;translate:-50% 0;background:radial-gradient(closest-side,rgba(159,191,106,.16),transparent);pointer-events:none}
 .fine{margin-top:80px;font-size:12px;opacity:.4}
 
+/* CONTINUOUS BACKDROP — photos cross-fade straight into each other, no flat bands */
+body{position:relative;background:#0b2115}
+#backdrop{position:absolute;left:0;right:0;top:0;z-index:0;pointer-events:none;overflow:hidden}
+#backdrop .bl{position:absolute;left:0;right:0;overflow:hidden}
+#backdrop img{width:100%;height:100%;object-fit:cover;display:block}
+#bS img{position:relative;top:-62%;height:162%;object-position:50% 0}   /* show only the stems and deep water, not the big pad or the sun */
+#bF img{object-position:50% 85%}
+.zone{position:relative;z-index:2;background:none!important}
+footer{position:relative;z-index:2;background:none!important}
+#backdrop::after{content:"";position:absolute;left:0;right:0;bottom:0;height:900px;background:linear-gradient(180deg,rgba(7,13,9,0) 0,rgba(7,13,9,.55) 35%,rgba(7,13,9,.92) 75%,#070d09 100%)}
+body{background:#070d09}
+.hero-copy{z-index:6}
 
+/* ---------- THE FIND: article rises out of the water, frog reads it from the edge ---------- */
+#find{padding-bottom:clamp(70px,9vw,120px)}
+.find-head{position:relative;z-index:2;text-align:center;padding:0 20px;margin-bottom:clamp(90px,10vw,150px)}
+.find-head h2{margin-top:0}
+.find-head p{margin:14px auto 0;max-width:none;opacity:.85}
+.rise{position:relative;z-index:2;width:min(1100px,calc(100% - 2*clamp(16px,2.2vw,32px)));margin:0 auto;will-change:transform}
+.rise-panel{position:relative;height:min(82vh,900px);border-radius:28px;overflow:hidden;background:#fff;border:1.5px solid rgba(230,250,240,.4);box-shadow:0 40px 80px -30px rgba(0,0,0,.6)}
+.rise-panel iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
+.rise-panel.live iframe{pointer-events:auto}
+.rise-water{position:absolute;inset:0;pointer-events:none;z-index:3;
+  backdrop-filter:blur(var(--blur,10px)) saturate(1.1);-webkit-backdrop-filter:blur(var(--blur,10px)) saturate(1.1);
+  background:linear-gradient(180deg,rgba(23,70,61,0),rgba(23,70,61,var(--tint,.35)));
+  -webkit-mask-image:linear-gradient(180deg,transparent var(--clear,0%),#000 calc(var(--clear,0%) + 22%));
+          mask-image:linear-gradient(180deg,transparent var(--clear,0%),#000 calc(var(--clear,0%) + 22%));
+  transition:opacity .4s}
+.rise-water.gone{opacity:0}
+.rise-frog{position:absolute;right:clamp(16px,4vw,60px);bottom:100%;z-index:4;width:clamp(110px,11vw,170px);margin-bottom:-14px;cursor:pointer;transform-origin:50% 100%;animation:sitbob 3.2s ease-in-out infinite}
+.rise-frog img{width:100%;display:block;filter:drop-shadow(0 8px 10px rgba(0,0,0,.35))}
+@keyframes sitbob{50%{transform:translateY(-3px) rotate(-1.5deg)}}
+.rise-say{position:absolute;right:100%;top:22%;margin-right:10px;padding:8px 14px;border-radius:16px;background:var(--foam);color:var(--deep);font:600 14px "Baloo 2",sans-serif;white-space:nowrap}
+.rise-say::after{content:"";position:absolute;right:-6px;top:50%;translate:0 -50%;border:7px solid transparent;border-left-color:var(--foam);border-right:0}
+@media(max-width:600px){
+  .rise-panel{height:70vh;border-radius:20px}
+  .rise-frog{right:18px;width:96px}
+  .rise-say{font-size:12px;padding:6px 10px}
+}
 
-/* PHOTO ZONES — seamless joins:
-   hero water  -> shallow (#2b4a2c -> image -> #0b2115)
-   shallow end #0b2115 ~ floor top #0a1d1c
-   floor end #232513 -> footer -> #070d09 */
-.zone{z-index:1}
-.zone > .wrap{position:relative;z-index:2}
-.zbg{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.zbg img{width:100%;height:100%;object-fit:cover;display:block}
-#find{background:linear-gradient(180deg,#2b4a2c 0,#0b2115 100%)}
-.zbg-shallow img{object-position:50% 0;
-  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 220px,#000 70%,transparent 100%);
-          mask-image:linear-gradient(180deg,transparent 0,#000 220px,#000 70%,transparent 100%)}
-.zbg-shallow::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,18,12,.6) 0%,rgba(6,18,12,.15) 50%,rgba(6,18,12,.35) 100%);-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 240px,#000 55%,transparent 95%);mask-image:linear-gradient(180deg,transparent 0,#000 240px,#000 55%,transparent 95%)}
-#bottom{background:linear-gradient(180deg,#0b2115 0,#0a1d1c 30%,#232513 100%)}
-.zbg-floor img{object-position:50% 100%;
-  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30%,#000 82%,transparent 100%);
-          mask-image:linear-gradient(180deg,transparent 0,#000 30%,#000 82%,transparent 100%)}
-.zbg-floor::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,29,28,.35),transparent 40%)}
-footer{background:linear-gradient(180deg,#232513 0,#0d130c 45%,#070d09 100%)!important}
-.hero{z-index:2}
+/* ---------- THE BOTTOM: curved infinite carousel (WebGL) ---------- */
+#bottom{padding:0!important}
+.curve-pin{position:relative;height:280vh}
+.curve-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,3vh,34px);overflow:hidden}
+.bottom-head{text-align:center;padding:0 20px}
+.bottom-head h2{margin-top:0}
+.bottom-head p{margin:12px auto 0;opacity:.85}
+.curve-stage{position:relative;height:min(54vh,560px);cursor:grab;touch-action:pan-y}
+.curve-stage.dragging{cursor:grabbing}
+.curve-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.curve-fallback{position:absolute;inset:0;display:none;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 20px}
+.curve-fallback.on{display:flex}
+.curve-fallback figure{flex:0 0 min(70vw,520px);margin:0;scroll-snap-align:center;border-radius:22px;overflow:hidden;background:#12241c;cursor:pointer}
+.curve-fallback canvas{position:static!important;display:block;width:100%!important;height:auto!important}
+.curve-fallback img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:600px){.curve-pin{height:230vh}.curve-stage{height:46vh}}
+
+/* ---------- HEADER BUY GROUP: one solid-yellow shape with necks, like the nav ---------- */
+.buy{position:relative;display:flex;align-items:center;gap:8px}
+.buy-btn{position:relative;z-index:1;display:flex;align-items:center;gap:8px;height:46px;padding:0 20px;border:0;border-radius:999px;background:var(--lily);color:#1d1606;
+  font:500 15px/1 "Baloo 2",sans-serif;text-decoration:none;white-space:nowrap;cursor:pointer;transition:opacity .2s}
+.buy-btn img{width:22px;height:22px;border-radius:6px;display:block;flex:none}
+.buy-btn:hover{background:var(--foam)}
+.buy-btn:focus-visible{outline:2px solid var(--foam);outline-offset:3px}
+.toast{position:fixed;left:50%;top:84px;translate:-50% -10px;z-index:60;padding:10px 18px;border-radius:999px;background:var(--foam);color:var(--deep);
+  font:600 14px "Baloo 2",sans-serif;opacity:0;pointer-events:none;transition:opacity .25s,translate .25s}
+.toast.on{opacity:1;translate:-50% 0}
+@media(max-width:1560px){ .buy .lg{display:none} }
+@media(max-width:1200px){ .navbar .pills{display:none} .navbar{grid-template-columns:auto 1fr!important} }
+@media(max-width:600px){
+  .word{display:none}
+  .buy{gap:6px}
+  .buy-btn{height:44px!important;padding:0 14px!important;font-size:15px!important}
+  .buy-btn img{width:22px;height:22px}
+  .ca-btn #caText{display:none}
+}
+
+/* ---------- THE FIND: article as a browser window ---------- */
+.rise-panel{display:flex;flex-direction:column;background:#dfe3e0!important;border:1px solid rgba(0,0,0,.18)!important;border-radius:14px!important}
+.chrome-bar{flex:none;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:14px;padding:10px 14px;background:#e9ece9;border-bottom:1px solid rgba(0,0,0,.1);color:#2b2f2c;text-decoration:none;cursor:pointer}
+.chrome-bar:hover .chrome-url{background:#fff}
+.chrome-dots{display:flex;gap:7px}
+.chrome-dots i{width:12px;height:12px;border-radius:50%;background:#ff5f57}
+.chrome-dots i:nth-child(2){background:#febc2e}.chrome-dots i:nth-child(3){background:#28c840}
+.chrome-url{display:flex;align-items:center;gap:8px;min-width:0;height:32px;padding:0 6px 0 14px;border-radius:999px;background:#f6f7f6;font:500 14px "Baloo 2",sans-serif;color:#3a3f3b;white-space:nowrap;overflow:hidden;transition:background .2s}
+.chrome-url svg{flex:none;color:#6b716c}
+.chrome-open{margin-left:auto;flex:none;padding:4px 12px;border-radius:999px;background:var(--lily);color:#1d1606;font-weight:600;font-size:13px}
+.chrome-view{position:relative;flex:1;background:#fff}
+.chrome-view iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.rise-water{border-radius:0}
+.buy-under{justify-content:center;margin-top:22px;flex-wrap:wrap}
+@media(max-width:700px){
+  .chrome-bar{grid-template-columns:auto 1fr;gap:10px;padding:8px 10px}
+  .chrome-url{font-size:12px}
+  .buy-under .buy-btn{height:42px}
+}
+
+/* ---------- CURSOR HAT: our hat rides on top of the pointer ---------- */
+.cursor-hat{position:fixed;left:0;top:0;z-index:9999;width:46px;height:auto;pointer-events:none;opacity:0;transition:opacity .2s;
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.35));will-change:transform}
+.cursor-hat.on{opacity:1}
+@media(hover:none),(pointer:coarse){.cursor-hat{display:none}}
+
+/* ---------- SHARE MODAL ---------- */
+.share{display:flex;flex-direction:column;align-items:center;gap:18px;max-width:min(900px,92vw)}
+.share img{max-width:100%;max-height:62vh;border-radius:18px;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.share-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.share-x{display:flex;align-items:center;gap:10px;height:48px;padding:0 24px;border-radius:999px;font:600 16px "Baloo 2",sans-serif;text-decoration:none}
+.share-x{background:var(--lily);color:#1d1606}
+.share-x:hover{background:var(--foam)}
+.share-note{margin:0;font-size:14px;opacity:.7;text-align:center;max-width:46ch}
+
+/* CA button = secondary */
+.buy-btn.ca-btn{background:rgba(255,211,92,.14);border:1.5px solid rgba(255,211,92,.7);color:var(--foam);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.buy-btn.ca-btn:hover{background:rgba(255,211,92,.26)}
+
+/* ---------- PHONE TUNING ---------- */
+.chrome-host{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:600px){
+  .hero-copy{top:132px!important;bottom:auto!important}
+  .find-head{margin-bottom:150px}
+  .rise-say{top:auto;bottom:100%;right:10px;margin:0 0 6px}
+  .rise-say::after{right:22px;top:100%;translate:0 0;border:7px solid transparent;border-top-color:var(--foam);border-bottom:0}
+  .rise-panel{height:72svh}
+  .chrome-open{padding:4px 10px}
+  .buy-under{flex-wrap:nowrap;gap:6px;margin-top:18px}
+  .buy-under .buy-btn{padding:0 14px!important;font-size:15px!important}
+  .curve-sticky{gap:22px}
+  footer h2{margin-top:150px}
+  .sound{bottom:12px!important;right:12px!important}
+  footer .btn{min-height:50px;padding:0 26px;font-size:16px}
+}
+
+/* ---------- PHONES: section titles bigger, memes as a vertical list ---------- */
+@media(max-width:600px){
+  h2{font-size:clamp(52px,15vw,64px);line-height:.86}
+  #find{padding-bottom:40px}
+  .curve-pin{height:320vh}
+  .curve-sticky{gap:14px;justify-content:flex-start;padding-top:70px}
+  .curve-stage{flex:1;height:auto;min-height:0;cursor:default;touch-action:pan-y;-webkit-mask-image:linear-gradient(transparent,#000 12%);mask-image:linear-gradient(transparent,#000 12%)}
+  .curve-fallback.on{position:static;flex-direction:column;overflow:visible;gap:18px;padding:0 16px}
+  .curve-fallback figure{flex:none;width:100%;opacity:0;transform:translateY(40px) scale(.97);transition:opacity .6s ease,transform .6s cubic-bezier(.3,.7,.3,1)}
+  .curve-fallback figure.in{opacity:1;transform:none}
+  .curve-fallback canvas{position:static!important;display:block;width:100%!important;height:auto!important;border-radius:22px}
+}
 
 /* SOUND */
 .sound{position:fixed;left:20px;bottom:20px;z-index:45;display:flex;align-items:center;gap:10px;height:48px;padding:0 18px 0 14px;border-radius:999px;border:1.5px solid rgba(238,243,226,.5);
-  background:rgba(5,22,18,.55);backdrop-filter:blur(10px);color:var(--foam);font:600 13px "Inter Tight",sans-serif;cursor:pointer;transition:border-color .2s}
+  background:rgba(5,22,18,.55);backdrop-filter:blur(10px);color:var(--foam);font:600 13px "Baloo 2",sans-serif;cursor:pointer;transition:border-color .2s}
 .sound:hover{border-color:var(--foam)}
 .sound:focus-visible{outline:2px solid var(--straw);outline-offset:3px}
 .sound .bars{display:flex;align-items:flex-end;gap:3px;height:16px}
@@ -191,7 +283,49 @@ footer{background:linear-gradient(180deg,#232513 0,#0d130c 45%,#070d09 100%)!imp
 .sound.on .bars i:nth-child(2){animation-delay:.2s}.sound.on .bars i:nth-child(3){animation-delay:.4s}.sound.on .bars i:nth-child(4){animation-delay:.6s}
 @keyframes eq{50%{height:16px}}
 .sound:not(.on){animation:nudge 2.4s ease-in-out 2s 3}
-@keyframes nudge{50%{box-shadow:0 0 0 8px rgba(232,201,138,.25)}}
+@keyframes nudge{50%{box-shadow:0 0 0 8px rgba(255,211,92,.25)}}
+
+/* ---------- HEADER, reference-style ---------- */
+nav{position:fixed;inset:0 0 auto;z-index:40;background:none;transition:transform .45s cubic-bezier(.3,.7,.3,1)}
+nav.hide{transform:translateY(-110%)}
+.navbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;padding:22px clamp(18px,2.2vw,32px)}
+.navbar .brand{justify-self:start}
+.navbar .pills{justify-self:center}
+.navbar .buy{justify-self:end}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--foam)}
+.mark{width:48px;height:auto;display:block;filter:drop-shadow(0 2px 5px rgba(0,0,0,.35))}
+.word{font:800 22px/1 "Baloo 2",sans-serif;letter-spacing:-.01em;text-transform:uppercase}
+.pills{position:relative;display:flex;align-items:center;gap:10px}
+.pills-bg{position:absolute;inset:0;background:rgba(255,211,92,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);clip-path:url(#pillclip);-webkit-clip-path:url(#pillclip)}
+.pills-svg{position:absolute;width:0;height:0}
+.pills a{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;height:46px;padding:0 22px;border-radius:999px;background:none;color:var(--foam);font:500 15px/1 "Baloo 2",sans-serif;text-decoration:none;white-space:nowrap;transition:color .2s}
+.pills a:hover{color:var(--straw)}
+.pills a:focus-visible,.brand:focus-visible{outline:2px solid var(--straw);outline-offset:3px}
+
+/* ---------- HERO COPY: bottom-left ---------- */
+.hero-copy{position:absolute;left:0;right:auto;top:auto;bottom:clamp(36px,7vh,72px);z-index:6;text-align:left;padding:0 clamp(18px,2.2vw,32px);pointer-events:none;max-width:min(640px,60vw)}
+.hero h1{font-size:clamp(52px,6.2vw,100px);line-height:.78;margin:0;max-width:none}
+.hero h1 span,.hero h1 em{display:block}
+.hero h1 span{font-size:1.12em}
+.hero h1 em{font-size:.72em;margin-top:.32em}
+.hero p{margin:18px 0 0;max-width:none;font-size:clamp(16px,1.35vw,20px);line-height:1.45;color:rgba(238,243,226,.82);}
+
+/* ---------- SOUND: bottom-right pill ---------- */
+.sound{left:auto!important;right:clamp(16px,2.2vw,32px);bottom:28px;height:44px;padding:0 16px 0 14px;gap:8px;background:rgba(238,243,226,.14);border:1px solid rgba(238,243,226,.35);font-size:13px}
+.sound .bars{height:13px}
+
+@media(max-width:900px){
+  .navbar{grid-template-columns:auto 1fr!important}
+  .pills{display:none}
+}
+@media(max-width:600px){
+  .navbar{padding:16px 16px}
+  .word{font-size:13px}
+  .hero-copy{position:absolute;top:auto;bottom:84px;max-width:none}
+  .hero h1{font-size:clamp(46px,16vw,72px);max-width:none}
+  .hero p br{display:none}
+  .sound{right:14px!important;bottom:14px!important;height:46px!important}
+}
 
 /* LIGHTBOX */
 .lb{position:fixed;inset:0;z-index:60;background:rgba(5,22,18,.92);display:none;place-items:center;padding:5vw}
@@ -201,129 +335,133 @@ footer{background:linear-gradient(180deg,#232513 0,#0d130c 45%,#070d09 100%)!imp
 
 @media(max-width:900px){
   nav ul{display:none}
-  .zone-head,.find{grid-template-columns:1fr}
-  .tags{position:static;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-  .bed{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .find{grid-template-columns:1fr}
   .depth{right:10px}
-  .depth .read{display:none}
 }
 @media(max-width:600px){
   .sound{left:auto;right:14px;bottom:14px;width:46px;height:46px;padding:0;justify-content:center}
   .sound #soundLbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-  .zbg-shallow img{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 100px,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 100px,#000 70%,transparent 100%)}
-  .hero{height:auto;min-height:0}
-  .stage{position:relative;height:64svh;min-height:420px}
-  .hero-copy{position:relative;padding:8px 0 30px;background:var(--surface)}
-  .dive-hint{display:none}
-  .hero h1{font-size:clamp(48px,14vw,68px)}
-  .jar{padding:46px 12px 18px;border-radius:30px 30px 46px 46px}
-  .paper{height:66vh}
+  .hero{height:100svh;min-height:600px}
   .depth{display:none}
+}
+/* ---------- TABLETS (601–1199px): fixed type steps instead of shrinking the desktop ---------- */
+@media(min-width:601px) and (max-width:1199px){
+  .hero-copy{max-width:none;bottom:64px;padding:0 32px}
+  .hero h1{font-size:88px}
+  .hero p,footer p{font-size:18px}
+  h2{font-size:72px}
+  footer h2{font-size:112px}
+  .navbar{padding:22px 32px}
+  /* small text never below 14px on tablets */
+  .fine{font-size:14px;opacity:.55}
+  .sound{font-size:14px}
+  .chrome-url,.chrome-open,.rise-say{font-size:14px}
+  .buy-btn{height:54px;padding:0 24px;font-size:18px;gap:10px}
+  .buy-btn img{width:28px;height:28px}
+  .buy-under{gap:12px}
+  footer .btn{min-height:56px;padding:0 32px;font-size:18px}
+  .sound{height:50px!important;padding:0 20px 0 16px!important;font-size:15px}
+  .chrome-url{font-size:15px;height:36px}
+  .hero p,footer p{font-size:20px}
+  /* memes: same vertical curved list as on phones, tighter gaps */
+  #find{padding-bottom:32px}
+  .buy-under{margin-top:20px}
+  .curve-pin{height:320vh}
+  .curve-sticky{gap:22px;justify-content:flex-start;padding-top:72px}
+  .curve-stage{flex:1;height:auto;min-height:0;cursor:default;touch-action:pan-y;-webkit-mask-image:linear-gradient(transparent,#000 12%);mask-image:linear-gradient(transparent,#000 12%)}
+  .depth{display:none!important}   /* depth meter is desktop-only */
+}
+@media(min-width:900px) and (max-width:1199px){
+  .hero h1{font-size:104px}
+  h2{font-size:84px}
+  footer h2{font-size:132px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
+<div id="backdrop" aria-hidden="true"><div class="bl" id="bS"><img src="assets/shallow.webp" alt=""></div><div class="bl" id="bF"><img src="assets/floor.webp" alt=""></div></div>
 <canvas id="bubbles" aria-hidden="true"></canvas>
 
-<nav id="nav"><div class="wrap">
-  <a class="logo" href="#top"><img src="assets/hat.webp" alt="">The Pond</a>
-  <ul>
-    <li><a href="#find">The find</a></li>
-    <li><a href="#bottom">The bottom</a></li>
-    <li><a href="#deep">The deep</a></li>
-  </ul>
-  <a class="btn" href="#deep" style="min-height:42px;padding:0 18px">Join the pond</a>
-</div></nav>
+<nav id="nav"><div class="navbar">
+  <a class="brand" href="#top" aria-label="KVORK, home">
+    <img class="mark" src="assets/logohat.webp" alt="" aria-hidden="true">
+    <span class="word">KVORK</span>
+  </a>
+    <div class="pills" id="pills"><span class="pills-bg" aria-hidden="true"></span><svg class="pills-svg" aria-hidden="true" width="0" height="0"><clipPath id="pillclip" clipPathUnits="userSpaceOnUse"></clipPath></svg><a href="#find">The find</a><a href="#bottom">The bottom</a><a href="#deep">The deep</a></div>
+    <div class="buy" id="buyGroup">
+      <a class="buy-btn" data-buy="fomo" id="buyFomo" href="#" target="_blank" rel="noopener"><img src="assets/logo-fomo.png" alt="" width="22" height="22"><span><span class="lg">Buy on </span>FOMO</span></a>
+      <a class="buy-btn" data-buy="pump" id="buyPump" href="#" target="_blank" rel="noopener"><img src="assets/logo-pump.png" alt="" width="22" height="22"><span><span class="lg">Buy on </span>pump.fun</span></a>
+      <button class="buy-btn ca-btn" data-buy="ca" id="copyCa" type="button" aria-label="Copy contract address"><span id="caText" class="ca-text">CA: TBA</span><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V6a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
+</div>
+</nav>
 
 <div class="depth" aria-hidden="true">
-  <div class="read" id="depthRead">Surface · 0.0 m</div>
-  <div class="track"><div class="fill" id="depthFill"></div><div class="dot" id="depthDot"></div></div>
+  <div class="track" id="depthTrack"><div class="line"></div><div class="fill" id="depthFill"></div><div class="float"></div>
+    <div class="dot" id="depthDot"><img src="assets/hat.webp" alt=""><div class="dtag"><b id="depthM">0.0</b><small>m</small><i id="depthRead">Surface</i></div></div>
+  </div>
 </div>
 
 <header class="hero" id="top">
   <div class="stage" id="stage">
-    <div class="scene" id="scene"><img id="bg" src="assets/bg.webp" alt="A misty green swamp with lily pads, cattails and tiny hats, with a large lily pad in the centre"></div>
+    <div class="scene" id="scene"><img id="bg" src="assets/swamp-v3.webp" alt="A misty green swamp with lily pads, cattails and tiny hats, with a large lily pad in the centre"></div>
     <div class="shadow" id="shadow"></div>
-    <div class="frog" id="frog" role="button" tabindex="0" aria-label="The frog in a knitted hat. Click to make him hop.">
+    <div class="frog" id="frog" role="button" tabindex="0" aria-label="The frok in a knitted hat. Click to make him hop.">
       <div class="frog-in" id="frogIn">
         <img src="assets/frog.webp" alt="">
         <span class="glint" id="g1" style="left:28%;top:39%"></span>
         <span class="glint" id="g2" style="left:66.8%;top:37%"></span>
       </div>
     </div>
-    <div class="bubble-say" id="say">hat stays on.</div>
+    <div class="bubble-say" id="say">hat stays on</div>
     <div class="vignette"></div>
   </div>
-  <div class="hero-copy"><div class="wrap">
-    <div class="eyebrow">Surface level · 0.0 m</div>
-    <h1>The hat<br><em>stays on.</em></h1>
-    <p>If you’re here, you want to know who the frog in the hat is. Hold your breath and dive.</p>
-    <div class="cta">
-      <a class="btn lily" href="#find">Dive in ↓</a>
-      <a class="btn" href="#bottom">Straight to the bottom</a>
-    </div>
-  </div></div>
-  <div class="dive-hint"><i></i>Scroll to dive</div>
+  <div class="hero-copy">
+    <h1><span>One frok</span><span>Many hats</span><em>Dive into the lore</em></h1>
+  </div>
 </header>
 
 <section class="zone" id="find" data-depth="1.2">
-  <div class="zbg zbg-shallow" aria-hidden="true"><img src="assets/shallow.webp" alt=""></div>
-  <div class="wrap">
-    <div class="zone-head">
-      <div>
-        <div class="eyebrow">Depth <b>1.2 m</b> · The find</div>
-        <h2 style="margin-top:14px">Something <em>washed in.</em></h2>
-      </div>
-      <p>A page in a jar. The press found the frog before you did. Read it before it sinks.</p>
+  <div class="find-head">
+    <h2>Something washed in</h2>
+  </div>
+  <div class="rise" id="rise">
+    <div class="rise-frog" id="riseFrog" role="button" tabindex="0" aria-label="The frok is reading the article">
+      <div class="rise-say" id="riseSay">reading about myself</div>
+      <img src="assets/frog.webp" alt="">
     </div>
-    <div class="find">
-      <div>
-        <div class="jar">
-          <div class="paper">
-            <div class="loading" id="loading">Unrolling the page…</div>
-            <iframe id="article" title="Frogs with Hats: A Delightful Trend Taking the Internet by Storm" loading="lazy"
-              src="https://curacao-nature.com/frogs-with-hats/#content"></iframe>
-          </div>
-        </div>
-        <div class="jar-label">“Frogs with Hats” · Critter Kingdom · 08.11.2026 <a href="https://curacao-nature.com/frogs-with-hats/" target="_blank" rel="noopener">Open original ↗</a></div>
+    <div class="rise-panel">
+      <a class="chrome-bar" href="https://curacao-nature.com/frogs-with-hats/" target="_blank" rel="noopener" aria-label="Open the original article in a new tab">
+        <span class="chrome-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="chrome-url"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2" fill="currentColor"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="chrome-host">curacao-nature.com/frogs-with-hats</span><span class="chrome-open">Open ↗</span></span>
+      </a>
+      <div class="chrome-view">
+      <div class="loading" id="loading">Surfacing the article…</div>
+      <iframe id="article" title="Frogs with Hats: A Delightful Trend Taking the Internet by Storm" loading="lazy"
+        src="https://curacao-nature.com/frogs-with-hats/#content"></iframe>
+      <div class="rise-water" id="riseWater" aria-hidden="true"></div>
       </div>
-      <aside class="tags">
-        <div class="tag">
-          <div class="eyebrow">Headline</div>
-          <h3>Gone viral</h3>
-          <p>Frogs in tiny hats. The internet lost it.</p>
-        </div>
-        <div class="tag">
-          <div class="eyebrow">Why it matters</div>
-          <h3>Good for you</h3>
-          <p>Art, amphibian love, instant serotonin.</p>
-        </div>
-        <div class="tag">
-          <div class="eyebrow">Pond rules</div>
-          <h3>Soft hats only</h3>
-          <p>If the frog objects, the hat comes off. He hasn’t.</p>
-        </div>
-      </aside>
+    </div>
+    <div class="buy buy-under" aria-label="Buy and contract">
+      <a class="buy-btn" data-buy="fomo" href="#" target="_blank" rel="noopener"><img src="assets/logo-fomo.png" alt="" width="22" height="22"><span><span class="lg">Buy on </span>FOMO</span></a>
+      <a class="buy-btn" data-buy="pump" href="#" target="_blank" rel="noopener"><img src="assets/logo-pump.png" alt="" width="22" height="22"><span><span class="lg">Buy on </span>pump.fun</span></a>
+      <button class="buy-btn ca-btn" data-buy="ca" type="button" aria-label="Copy contract address"><span class="ca-text">CA: TBA</span><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V6a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
     </div>
   </div>
 </section>
 
 <section class="zone bottom" id="bottom" data-depth="2.4">
-  <div class="zbg zbg-floor" aria-hidden="true"><img src="assets/floor.webp" alt=""></div>
-  <div class="wrap">
-    <div class="zone-head">
-      <div>
-        <div class="eyebrow">Depth <b>2.4 m</b> · The bottom</div>
-        <h2 style="margin-top:14px">Treasures <em>of the pond.</em></h2>
+  <div class="curve-pin" id="curvePin">
+    <div class="curve-sticky">
+      <div class="bottom-head">
+        <h2>Treasures of the pond</h2>
       </div>
-      <p>Same frog. Same hat. Every single treasure. Tap one to bring it up.</p>
-    </div>
-    <div class="bed" id="bed"></div>
-    <div class="addrow wrap" style="padding-inline:0">
-      <p>Placeholder treasures: the real memes go here.</p>
-      <label class="btn">Drop a meme in<input type="file" id="add" accept="image/*" multiple></label>
+      <div class="curve-stage" id="curveStage">
+        <canvas id="curve" aria-label="Meme carousel"></canvas>
+        <div class="curve-fallback" id="curveFallback"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -332,22 +470,29 @@ footer{background:linear-gradient(180deg,#232513 0,#0d130c 45%,#070d09 100%)!imp
   <img class="sinker" src="assets/hat.webp" alt="">
   <div class="glow" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="eyebrow">Depth 3.0 m · The deep</div>
-    <h2>Join <em style="font-style:italic;color:var(--lily)">the pond.</em></h2>
-    <p>You made it to the bottom. Now come up for air with us.</p>
+    <h2>Join the pond</h2>
+    <p>You made it to the bottom<br>Now come up for air with us</p>
     <div class="socials">
-      <a class="btn lily" href="#" target="_blank" rel="noopener">Follow on X ↗</a>
-      <a class="btn" href="#" target="_blank" rel="noopener">Telegram ↗</a>
+      <a class="btn lily" href="#" target="_blank" rel="noopener">Follow on X</a>
     </div>
-    <div class="fine">The article belongs to its authors at curacao-nature.com and is embedded as published.</div>
+    <div class="fine">The article belongs to its authors at curacao-nature.com and is embedded as published</div>
   </div>
 </footer>
 
 <button class="sound" id="sound" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="soundLbl">Sound on</span></button>
 
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Meme">
+<img class="cursor-hat" id="cursorHat" src="assets/logohat.webp" alt="" aria-hidden="true">
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Share this meme">
   <button id="lbClose" aria-label="Close">✕</button>
-  <img id="lbImg" alt="">
+  <div class="share">
+    <img id="lbImg" alt="">
+    <div class="share-row">
+      <a class="share-x" id="shareX" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M17.75 3h3.07l-6.72 7.68L22 21h-6.19l-4.85-6.34L5.4 21H2.33l7.19-8.21L2 3h6.35l4.38 5.79L17.75 3Zm-1.08 16.18h1.7L7.4 4.73H5.58l11.09 14.45Z"/></svg>Post on X</a>
+    </div>
+    <p class="share-note">The post opens in X with our meme card and site link<br>Write your own caption, the link stays</p>
+  </div>
 </div>
 
 <script>
@@ -389,7 +534,7 @@ footer{background:linear-gradient(180deg,#232513 0,#0d130c 45%,#070d09 100%)!imp
   addEventListener('resize', place);
   if (!reduce) setInterval(() => { if (!inside) { tx=(Math.random()-.5)*1.2; ty=(Math.random()-.5)*.6; } }, 2600);
 
-  const lines = ['hat stays on.', 'the water is fine.', 'ribbit. formally.', 'yes, it’s knitted.', 'dive. i’ll wait.'];
+  const lines = ['hat stays on', 'the water is fine', 'ribbit, formally', 'yes, it’s knitted', 'dive, i’ll wait'];
   let li = 0, st;
   function hop() {
     frogIn.classList.remove('hop'); void frogIn.offsetWidth; frogIn.classList.add('hop');
@@ -409,13 +554,47 @@ footer{background:linear-gradient(180deg,#232513 0,#0d130c 45%,#070d09 100%)!imp
   const nav = document.getElementById('nav'), fill = document.getElementById('depthFill'), dot = document.getElementById('depthDot'), read = document.getElementById('depthRead');
   const zones = [['Surface',0],['The find',1.2],['The bottom',2.4],['The deep',3.0]];
   function onScroll() {
-    nav.classList.toggle('solid', scrollY > innerHeight*.6);
+    const y = scrollY, goingDown = y > (window.__lastY || 0);
+    if (y < 80) nav.classList.remove('hide');
+    else if (Math.abs(y - (window.__lastY || 0)) > 4) nav.classList.toggle('hide', goingDown);
+    window.__lastY = y;
+    const dEl = document.querySelector('.depth'), heroH = document.querySelector('.hero').offsetHeight;
+    dEl.classList.toggle('show', scrollY > heroH - innerHeight*.5);   // only once the second block comes into view
     const max = document.documentElement.scrollHeight - innerHeight, p = max > 0 ? Math.min(scrollY/max, 1) : 0;
-    fill.style.height = (p*100)+'%'; dot.style.top = (p*100)+'%';
-    const m = p*3.0; let name = zones[0][0];
-    for (const z of zones) if (m >= z[1]-.15) name = z[0];
-    read.textContent = `${name} · ${m.toFixed(1)} m`;
+    depthTarget = p;
   }
+  // the hat is the sinker on a fishing line: it eases to its depth, swings when you scroll and leaves bubbles
+  const track = document.getElementById('depthTrack'), dM = document.getElementById('depthM'), hatImg = dot.querySelector('img');
+  const ticks = [];
+  for (let k = 0; k <= 12; k++) { const t = document.createElement('div'); t.className = 'tick' + (k % 4 === 0 ? ' major' : ''); t.style.top = (k/12*100)+'%';
+    if (k % 4 === 0) t.innerHTML = '<b>' + (k/4) + ' m</b>'; track.appendChild(t); ticks.push([t, k/12]); }
+  let depthTarget = 0, depthCur = 0, depthVel = 0, swing = 0, swingV = 0, lastBub = 0, lastZone = '';
+  function depthTick(now) {
+    const prev = depthCur; depthCur += (depthTarget - depthCur) * .08; const v = depthCur - prev;
+    depthVel += (v - depthVel) * .2;
+    swingV += (-depthVel * 900 - swing) * .06; swingV *= .9; swing += swingV;      // pendulum lag behind the motion
+    const idle = Math.sin(now / 900) * 3;
+    const pc = depthCur * 100;
+    fill.style.height = pc + '%'; dot.style.top = pc + '%';
+    hatImg.style.transform = `rotate(${Math.max(-28, Math.min(28, swing + idle))}deg)`;
+    const m = depthCur * 3; dM.textContent = m.toFixed(1);
+    let name = zones[0][0]; for (const z of zones) if (m >= z[1] - .15) name = z[0];
+    if (name !== lastZone) { read.textContent = name; lastZone = name; }
+    for (const [t, f] of ticks) { t.classList.toggle('on', f <= depthCur + .001); t.classList.toggle('near', Math.abs(f - depthCur) < .1); }
+    // bubbles: a few always, many more while sinking fast
+    const rate = 900 - Math.min(800, Math.abs(depthVel) * 6e5);
+    if (now - lastBub > rate && document.querySelector('.depth.show')) { lastBub = now; spawnBub(pc); }
+    requestAnimationFrame(depthTick);
+  }
+  function spawnBub(pc) {
+    const b = document.createElement('div'); b.className = 'bub'; const sz = 3 + Math.random() * 6;
+    b.style.cssText = `width:${sz}px;height:${sz}px;top:${pc}%;margin:-14px 0 0 ${-sz/2 + (Math.random()*12-6)}px`;
+    track.appendChild(b);
+    const rise = 40 + Math.random() * 60, drift = Math.random() * 16 - 8;
+    b.animate([{transform:'translate(0,0)', opacity:0}, {opacity:.9, offset:.15}, {transform:`translate(${drift}px,${-rise}px)`, opacity:0}],
+      {duration: 1400 + Math.random()*900, easing:'ease-out'}).onfinish = () => b.remove();
+  }
+  requestAnimationFrame(depthTick);
   addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
   /* ---------- BUBBLES: rise underwater, more where the cursor moves ---------- */
@@ -439,11 +618,21 @@ footer{background:linear-gradient(180deg,#232513 0,#0d130c 45%,#070d09 100%)!imp
     for (const b of bubbles) {
       b.y -= b.vy; b.x += Math.sin((b.y + b.ph*40)/30)*.35;
       if (b.y < surfaceY + 50 || b.y < -20) b.life -= .08;
-      ctx.globalAlpha = Math.max(b.life, 0)*.55;
-      ctx.beginPath(); ctx.arc(b.x*dpr, b.y*dpr, b.r*dpr, 0, Math.PI*2);
-      ctx.strokeStyle = '#dff3e6'; ctx.lineWidth = 1.2*dpr; ctx.stroke();
-      ctx.beginPath(); ctx.arc((b.x - b.r*.35)*dpr, (b.y - b.r*.35)*dpr, b.r*.28*dpr, 0, Math.PI*2);
-      ctx.fillStyle = '#ffffff'; ctx.fill();
+      // soft glassy bubble: clear centre, bright refracting rim, small specular glint, slight wobble
+      const X = b.x*dpr, Y = b.y*dpr, R = b.r*dpr, wob = Math.sin((b.y + b.ph*50)/12) * .06;
+      ctx.globalAlpha = Math.max(b.life, 0) * (.35 + Math.min(b.r, 8) * .05);
+      ctx.save(); ctx.translate(X, Y); ctx.scale(1 + wob, 1 - wob);
+      const g = ctx.createRadialGradient(-R*.25, -R*.3, R*.05, 0, 0, R);
+      g.addColorStop(0, 'rgba(255,255,255,.10)');
+      g.addColorStop(.62, 'rgba(190,235,220,.05)');
+      g.addColorStop(.88, 'rgba(215,245,235,.35)');
+      g.addColorStop(1, 'rgba(235,255,248,.75)');
+      ctx.beginPath(); ctx.arc(0, 0, R, 0, Math.PI*2); ctx.fillStyle = g; ctx.fill();
+      ctx.beginPath(); ctx.ellipse(-R*.38, -R*.42, R*.3, R*.16, -.7, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,.85)'; ctx.fill();
+      ctx.beginPath(); ctx.arc(R*.35, R*.4, R*.09, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,.4)'; ctx.fill();
+      ctx.restore();
     }
     ctx.globalAlpha = 1;
     bubbles = bubbles.filter(b => b.life > 0);
@@ -521,39 +710,355 @@ footer{background:linear-gradient(180deg,#232513 0,#0d130c 45%,#070d09 100%)!imp
     depthP = max > 0 ? Math.min(scrollY/max, 1) : 0; applyDepth();
   }, {passive:true});
 
+
+  /* ---------- CONTINUOUS BACKDROP LAYOUT ---------- */
+  const bd = document.getElementById('backdrop'), bS = document.getElementById('bS'), bF = document.getElementById('bF');
+  const heroEl = document.querySelector('.hero'), findEl = document.getElementById('find'), botEl = document.getElementById('bottom'), footEl = document.getElementById('deep');
+  function mask(el, g) { el.style.webkitMaskImage = g; el.style.maskImage = g; }
+  function layoutBackdrop() {
+    const small = innerWidth < 600;
+    const O1 = small ? 120 : 200;            // swamp -> underwater cross-fade
+    const O2 = small ? 180 : 360;            // shallow -> floor cross-fade
+    const docH = document.documentElement.scrollHeight;
+    bd.style.height = docH + 'px';
+    const heroB = heroEl.offsetTop + heroEl.offsetHeight;
+    const findB = findEl.offsetTop + findEl.offsetHeight;
+    const sTop = heroB - O1, sH = findB + O2 - sTop;
+    bS.style.top = sTop + 'px'; bS.style.height = sH + 'px';
+    mask(bS, 'none');                       // stays solid: the swamp fades out above it, the floor fades in over it
+    const fTop = findB - O2, fEnd = footEl.offsetTop + footEl.offsetHeight*.7, fH = fEnd - fTop;
+    bF.style.top = fTop + 'px'; bF.style.height = fH + 'px';
+    mask(bF, `linear-gradient(180deg,transparent 0,#000 ${2*O2}px,#000 ${fH*.72}px,transparent ${fH}px)`);
+    // the swamp photo should also melt into the water below it, not stop at an edge
+    const st = document.getElementById('stage');
+    mask(st, `linear-gradient(180deg,#000 0,#000 calc(100% - ${O1}px),transparent 100%)`);
+    if (small) { const sb = st.offsetTop + st.offsetHeight; bS.style.top = (sb - O1) + 'px'; bS.style.height = (findB + O2 - (sb - O1)) + 'px'; }
+  }
+  layoutBackdrop();
+  addEventListener('load', layoutBackdrop);
+  addEventListener('resize', layoutBackdrop);
+  new ResizeObserver(layoutBackdrop).observe(document.body);
+
+
+
+  /* ---------- NAV PILLS: one shared yellow glass shape (pills + concave necks), so overlaps never double up ---------- */
+  function buildPillClip() { buildClip('pills', 'pillclip', 'a');  }
+  function buildClip(wrapId, clipId, sel) {
+    const wrap = document.getElementById(wrapId); if (!wrap || !wrap.offsetWidth) return;
+    const cp = document.getElementById(clipId), links = [...wrap.querySelectorAll(sel)];
+    const NS = 'http://www.w3.org/2000/svg', w0 = wrap.getBoundingClientRect();
+    cp.innerHTML = '';
+    const rects = links.map(a => { const r = a.getBoundingClientRect(); return {x: r.left - w0.left, y: r.top - w0.top, w: r.width, h: r.height}; });
+    rects.forEach(r => { const e = document.createElementNS(NS, 'rect');
+      e.setAttribute('x', r.x); e.setAttribute('y', r.y); e.setAttribute('width', r.w); e.setAttribute('height', r.h); e.setAttribute('rx', r.h/2); cp.appendChild(e); });
+    for (let i = 0; i < rects.length - 1; i++) {
+      const a = rects[i], b = rects[i+1], cy = a.y + a.h/2, hh = a.h/2;
+      const xa = a.x + a.w - hh, xb = b.x + hh, mx = (xa + xb)/2, half = mx - xa, w = hh*.42, d = half*.55, d2 = half*.4;
+      const p = document.createElementNS(NS, 'path');
+      p.setAttribute('d', `M${xa},${cy-hh} C${xa+d},${cy-hh} ${mx-d2},${cy-w} ${mx},${cy-w} C${mx+d2},${cy-w} ${xb-d},${cy-hh} ${xb},${cy-hh}`
+        + ` L${xb},${cy+hh} C${xb-d},${cy+hh} ${mx+d2},${cy+w} ${mx},${cy+w} C${mx-d2},${cy+w} ${xa+d},${cy+hh} ${xa},${cy+hh} Z`);
+      cp.appendChild(p);
+    }
+  }
+  buildPillClip(); addEventListener('resize', buildPillClip); addEventListener('load', buildPillClip);
+  if (document.fonts) document.fonts.ready.then(buildPillClip);
+
+
+  /* ---------- TOKEN LINKS — fill these in when the token is live ---------- */
+  const TOKEN = {
+    ca:   '',   // contract address
+    fomo: '',   // FOMO link
+    pump: ''    // pump.fun link (left empty: built from the CA as pump.fun/coin/<CA>)
+  };
+  const toastEl = document.getElementById('toast'); let tt;
+  const toast = msg => { toastEl.textContent = msg; toastEl.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove('on'), 1800); };
+  const short = ca => ca.length > 12 ? ca.slice(0, 4) + '…' + ca.slice(-4) : ca;
+  const pumpUrl = TOKEN.pump || (TOKEN.ca ? 'https://pump.fun/coin/' + encodeURIComponent(TOKEN.ca) : '');
+  const links = {fomo: TOKEN.fomo, pump: pumpUrl};
+  document.querySelectorAll('[data-buy="fomo"],[data-buy="pump"]').forEach(a => {
+    const url = links[a.dataset.buy];
+    if (url) a.href = url;
+    else a.addEventListener('click', e => { e.preventDefault(); toast('Launching soon, hat stays on'); });
+  });
+  document.querySelectorAll('.ca-text').forEach(t => t.textContent = TOKEN.ca ? 'CA: ' + short(TOKEN.ca) : 'CA: TBA');
+  document.querySelectorAll('[data-buy="ca"]').forEach(btn => btn.addEventListener('click', async () => {
+    if (!TOKEN.ca) { toast('Contract address coming soon'); return; }
+    try { await navigator.clipboard.writeText(TOKEN.ca); toast('Contract address copied'); }
+    catch (e) {
+      const t = document.createElement('textarea'); t.value = TOKEN.ca; document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); toast('Contract address copied'); } catch (_) { toast(TOKEN.ca); }
+      t.remove();
+    }
+  }));
+  if (typeof buildPillClip === 'function') setTimeout(buildPillClip, 50);
+
+
+  /* ---------- CURSOR HAT ---------- */
+  const ch = document.getElementById('cursorHat');
+  if (ch && matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    let hx = -100, hy = -100, cx2 = -100, cy2 = -100, tilt = 0;
+    addEventListener('pointermove', e => { hx = e.clientX; hy = e.clientY; ch.classList.add('on'); }, {passive:true});
+    document.addEventListener('pointerleave', () => ch.classList.remove('on'));
+    addEventListener('blur', () => ch.classList.remove('on'));
+    (function follow() {
+      const dx = hx - cx2;
+      cx2 += dx * .35; cy2 += (hy - cy2) * .35;
+      tilt += ((reduce ? 0 : Math.max(-18, Math.min(18, dx * .8))) - tilt) * .2;
+      // sit the hat on the tip of the arrow, slightly tilted by the movement
+      ch.style.transform = `translate(${cx2 - 16}px, ${cy2 - 30}px) rotate(${tilt - 8}deg)`;
+      requestAnimationFrame(follow);
+    })();
+  }
+
+
+  /* ---------- FOOTER: hat sinks once, when the footer is first reached ---------- */
+  const sinker = document.querySelector('footer .sinker');
+  if (sinker) {
+    // land the hat on the heading itself, sitting on the "o" like a hat on the word
+    const fh2 = document.querySelector('footer h2');
+    const HAT_XTOP = .17, HAT_SINK = .86;
+    const placeHat = () => {
+      const tn = fh2.firstChild; if (!tn || tn.nodeType !== 3) return;
+      const rg = document.createRange(); rg.setStart(tn, 0); rg.setEnd(tn, 2);
+      const r = rg.getBoundingClientRect(), f = document.getElementById('deep').getBoundingClientRect();
+      const ro = document.createRange(); ro.setStart(tn, 1); ro.setEnd(tn, 2);
+      const o = ro.getBoundingClientRect();                       // the "o" — the hat sits on it
+      const fs = parseFloat(getComputedStyle(fh2).fontSize);
+      const w = Math.max(70, o.width * 1.7), h = w * (189 / 300);     // sized to the "o" so the J stays readable
+      const oTop = o.top + o.height / 2 - fs * HAT_XTOP;          // top of the lowercase "o"
+      sinker.style.width = w + 'px'; sinker.style.marginLeft = '0';
+      sinker.style.left = (o.left - f.left + o.width * .5 - w / 2) + 'px';
+      sinker.style.top = (oTop - f.top - h * HAT_SINK) + 'px';    // brim rests on the "o"
+    };
+    placeHat(); addEventListener('resize', placeHat); if (document.fonts) document.fonts.ready.then(placeHat);
+    // start only once the spot where the hat lands is well inside the screen
+    const drift = () => {
+      // one smooth, continuous drift: fade 0 -> 1, ease down, gentle decaying sway
+      const DUR = 5200, drop = innerWidth < 600 ? 160 : 260, t0 = performance.now();
+      const easeOut = t => 1 - Math.pow(1 - t, 3);
+      const step = now => {
+        const t = Math.min(1, (now - t0) / DUR), e = easeOut(t), damp = 1 - e;
+        const y = -drop * (1 - e);
+        const x = Math.sin(t * Math.PI * 3) * 26 * damp;
+        const r = Math.sin(t * Math.PI * 3 + .6) * 12 * damp - 10 * e;
+        sinker.style.opacity = Math.min(1, t / .35).toFixed(3);
+        sinker.style.transform = `translate(${x.toFixed(2)}px, ${y.toFixed(2)}px) rotate(${r.toFixed(2)}deg)`;
+        if (t < 1) requestAnimationFrame(step); else follow();
+      };
+      // after landing: lean and turn toward the cursor, like the frog, with a slow bob
+      const follow = () => {
+        const foot = document.getElementById('deep');
+        let tx = 0, ty = 0, cx = 0, cy = 0;
+        foot.addEventListener('pointermove', e => {
+          const r = sinker.getBoundingClientRect();
+          tx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width/2)) / (innerWidth * .4)));
+          ty = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height/2)) / (innerHeight * .5)));
+        });
+        foot.addEventListener('pointerleave', () => { tx = 0; ty = 0; });
+        const tf0 = performance.now();
+        const loop = now => {
+          cx += (tx - cx) * .08; cy += (ty - cy) * .08;
+          const bob = Math.sin((now - tf0) / 1000 * 1.4) * 4;
+          sinker.style.transform = `translate(${(cx * 10).toFixed(2)}px, ${(bob + cy * 6).toFixed(2)}px) perspective(600px) rotateY(${(cx * 22).toFixed(2)}deg) rotateX(${(-cy * 12).toFixed(2)}deg) rotate(${(cx * 6 - 10).toFixed(2)}deg)`;
+          requestAnimationFrame(loop);
+        };
+        requestAnimationFrame(loop);
+      };
+      if (reduce) { sinker.style.opacity = 1; sinker.style.transform = 'rotate(-10deg)'; } else requestAnimationFrame(step);
+    };
+    // start when the landing spot is well inside the screen, or when the page can't scroll any further (tall tablets)
+    let dropped = false;
+    const check = () => {
+      if (dropped) return;
+      const top = sinker.getBoundingClientRect().top, atEnd = innerHeight + scrollY >= document.documentElement.scrollHeight - 4;
+      if (top < innerHeight * .65 || (atEnd && top < innerHeight)) { dropped = true; removeEventListener('scroll', check); drift(); }
+    };
+    addEventListener('scroll', check, {passive:true}); check();
+  }
+
+  /* ---------- THE FIND: surfacing effect ---------- */
+  const rise = document.getElementById('rise'), riseWater = document.getElementById('riseWater');
+  const riseFrog = document.getElementById('riseFrog'), riseSay = document.getElementById('riseSay');
+  function surfacing() {
+    const r = rise.getBoundingClientRect();
+    // 0 when the panel top is at the bottom of the screen, 1 when it reaches ~22% from the top
+    const p = Math.max(0, Math.min(1, (innerHeight - r.top) / (innerHeight * .78)));
+    const e = 1 - Math.pow(1 - p, 3);
+    rise.style.transform = reduce ? 'none' : `translateY(${(1 - e) * 70}px)`;
+    riseWater.style.setProperty('--blur', (reduce ? 0 : (1 - e) * 12).toFixed(2) + 'px');
+    riseWater.style.setProperty('--tint', ((1 - e) * .45).toFixed(3));
+    riseWater.style.setProperty('--clear', (e * 100).toFixed(1) + '%');
+    riseWater.classList.toggle('gone', e > .985);
+    // let the article scroll only once the panel sits in the middle of the screen; before that the page keeps scrolling
+    const panel = rise.querySelector('.rise-panel'), pr = panel.getBoundingClientRect();
+    const centred = Math.abs((pr.top + pr.height/2) - innerHeight/2) < innerHeight*.12 || (pr.top <= innerHeight*.1 && pr.bottom >= innerHeight*.9);
+    panel.classList.toggle('live', centred);
+  }
+  addEventListener('scroll', surfacing, {passive:true}); addEventListener('resize', surfacing); surfacing();
+  const riseLines = ['reading about myself', 'they spelled “hat” right', 'nice photo, not mine', 'five minutes? i read it in two', 'ok, back to the pad'];
+  let rl = 0;
+  const nextLine = () => { riseSay.textContent = riseLines[++rl % riseLines.length]; };
+  riseFrog.addEventListener('click', nextLine);
+  riseFrog.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); nextLine(); } });
+
   /* ---------- THE FIND ---------- */
   const fr = document.getElementById('article'), ld = document.getElementById('loading');
   fr.addEventListener('load', () => ld.classList.add('off'));
 
-  /* ---------- THE BOTTOM ---------- */
-  const FROG = frog.querySelector('img').src;
-  const items = [{src: FROG, cut: true, c: 'The original. Hat on.'}, {c: 'Treasure 02'}, {c: 'Treasure 03'}, {c: 'Treasure 04'}, {c: 'Treasure 05'}, {c: 'Treasure 06'}, {c: 'Treasure 07'}, {c: 'Treasure 08'}];
-  const bed = document.getElementById('bed');
-  const esc = v => String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  function render() {
-    bed.innerHTML = items.map((it, i) => `
-      <figure class="gem" data-i="${i}" tabindex="0" role="button" aria-label="Open ${esc(it.c)}">
-        <div class="shell">${it.src ? `<img src="${esc(it.src)}" alt="${esc(it.c)}"${it.cut ? ' class="cut"' : ''} loading="lazy">` : `<span>${esc(it.c)}</span>`}</div>
-        <figcaption>${esc(it.c)}</figcaption>
-      </figure>`).join('');
-  }
-  render();
-  bed.addEventListener('pointerover', e => {
-    const g = e.target.closest('.gem'); if (!g || reduce) return;
-    const r = g.getBoundingClientRect();
-    for (let k = 0; k < 5; k++) setTimeout(() => spawn(r.left + r.width*(.3 + Math.random()*.4), r.top + r.height*.3, 2+Math.random()*4), k*70);
-  });
-  document.getElementById('add').addEventListener('change', e => {
-    for (const f of e.target.files) {
-      const url = URL.createObjectURL(f), slot = items.findIndex(it => !it.src);
-      if (slot > -1) items[slot].src = url; else items.push({src: url, c: 'Treasure ' + String(items.length+1).padStart(2,'0')});
+  /* ---------- THE BOTTOM: curved infinite carousel ---------- */
+  const items = [{src: 'assets/memes/01.jpg', c: 'Hat on, vibes up'}, {src: 'assets/memes/02.jpg', c: 'This is fine'}, {src: 'assets/memes/03.jpg', c: 'Captain Frok'}, {src: 'assets/memes/04.jpg', c: 'Frok at dinner'}, {src: 'assets/memes/05.jpg', c: 'Doge, meet Frok'}, {src: 'assets/memes/06.jpg', c: 'Hacking the pond'}, {src: 'assets/memes/07.jpg', c: 'Sheriff of gains'}, {src: 'assets/memes/08.jpg', c: 'Kiss the Frok'}];
+  const stageEl = document.getElementById('curveStage'), cv3 = document.getElementById('curve'), pin = document.getElementById('curvePin');
+  const fb = document.getElementById('curveFallback');
+  const FONT = '"Baloo 2",sans-serif';
+  const CW = 1024, CH = 576;          // card texture size (16 : 9, same as the memes)
+
+  function loadImg(src) { return new Promise(res => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src; }); }
+  async function drawCard(it, i) {
+    const c = document.createElement('canvas'); c.width = CW; c.height = CH; const g = c.getContext('2d');
+    const grd = g.createLinearGradient(0, 0, CW, CH); grd.addColorStop(0, '#2b4a2c'); grd.addColorStop(1, '#0c2e2a');
+    g.fillStyle = grd; g.fillRect(0, 0, CW, CH);
+    const im = it.src ? await loadImg(it.src) : null;
+    if (im) {
+      const s = Math.max(CW/im.width, CH/im.height), w = im.width*s, h = im.height*s; g.drawImage(im, (CW-w)/2, (CH-h)/2, w, h);
+    } else {
+      g.fillStyle = 'rgba(255,211,92,.9)'; g.font = `600 64px ${FONT}`; g.textAlign = 'center'; g.fillText(it.c, CW/2, CH/2);
+      g.fillStyle = 'rgba(238,243,226,.55)'; g.font = `500 28px ${FONT}`; g.fillText('meme goes here', CW/2, CH/2 + 48); g.textAlign = 'left';
     }
-    render();
-  });
+    const sh = g.createLinearGradient(0, CH*.62, 0, CH); sh.addColorStop(0, 'rgba(0,0,0,0)'); sh.addColorStop(1, 'rgba(0,0,0,.55)');
+    g.fillStyle = sh; g.fillRect(0, CH*.6, CW, CH*.4);
+    g.fillStyle = '#eef3e2'; g.font = `500 32px ${FONT}`; g.fillText(it.c, 44, CH - 42);
+    // round "open" badge with a drawn arrow, optically centred
+    const bx = CW - 66, by = CH - 58, br = 24;
+    g.beginPath(); g.arc(bx, by, br, 0, Math.PI*2); g.fillStyle = '#ffd35c'; g.fill();
+    g.strokeStyle = '#1d1606'; g.lineWidth = 3.4; g.lineCap = 'round'; g.lineJoin = 'round';
+    const a = 8;
+    g.beginPath(); g.moveTo(bx - a, by + a); g.lineTo(bx + a, by - a); g.stroke();
+    g.beginPath(); g.moveTo(bx - a*.35, by - a); g.lineTo(bx + a, by - a); g.lineTo(bx + a, by + a*.35); g.stroke();
+    return c;
+  }
+
+  function useFallback() {
+    fb.classList.add('on'); cv3.style.display = 'none';
+    fb.innerHTML = '';
+    const rio = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); rio.unobserve(en.target); } }), {threshold:.15});
+    items.forEach((it, i) => { const fig = document.createElement('figure'); fig.addEventListener('click', () => openIt(i)); fb.appendChild(fig); rio.observe(fig);
+      drawCard(it, i).then(c => { c.style.width = '100%'; c.style.height = 'auto'; fig.appendChild(c); }); });
+  }
+
+  let rebuildCurve = null;
+  (async () => {
+    let THREE;
+    try {
+      if (!window.WebGLRenderingContext) throw 0;
+      THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
+    } catch (e) { useFallback(); return; }
+    if (document.fonts) { try { await document.fonts.ready; } catch (e) {} }
+
+    const renderer = new THREE.WebGLRenderer({canvas: cv3, alpha: true, antialias: true});
+    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(35, 1, 1, 10000);
+    let W = 1, H = 1, cw = 1, ch = 1, gap = 1, L = 1, R = 1, VERT = false;
+    const meshes = [];
+    const vert = `
+      uniform float uX, uR, uVel, uVert; varying vec2 vUv; varying float vN;
+      void main(){
+        vUv = uv;
+        vec3 p = position;
+        if (uVert < 0.5) {
+          float a = (p.x + uX) / uR;                         // wrap around the inside of a vertical cylinder
+          float px = uR * sin(a), pz = uR * (1.0 - cos(a));  // edges come towards the viewer
+          pz -= sin(uv.x * 3.14159) * uVel * 0.9;            // cards flex with scroll speed
+          p.y += sin(uv.x * 3.14159) * uVel * 0.12 * sign(p.y);
+          vN = clamp(a / 1.2, -1.5, 1.5);
+          gl_Position = projectionMatrix * viewMatrix * vec4(px, p.y, pz, 1.0);
+        } else {
+          float a = (p.y - uX) / uR;                         // phones: same effect, rolling top-to-bottom
+          float py = uR * sin(a), pz = uR * (1.0 - cos(a));
+          pz -= sin(uv.y * 3.14159) * uVel * 0.9;
+          p.x += sin(uv.y * 3.14159) * uVel * 0.12 * sign(p.x);
+          vN = clamp(a / 1.2, -1.5, 1.5);
+          gl_Position = projectionMatrix * viewMatrix * vec4(p.x, py, pz, 1.0);
+        }
+      }`;
+    const frag = `
+      uniform sampler2D uTex; uniform vec2 uSize; uniform float uRad; varying vec2 vUv; varying float vN;
+      float rbox(vec2 p, vec2 b, float r){ vec2 q = abs(p) - b + r; return length(max(q,0.0)) + min(max(q.x,q.y),0.0) - r; }
+      void main(){
+        vec2 p = (vUv - 0.5) * uSize;
+        float d = rbox(p, uSize*0.5, uRad);
+        float alpha = 1.0 - smoothstep(-1.0, 1.0, d);
+        vec4 col = texture2D(uTex, vUv);
+        col.rgb *= 1.0 - 0.55 * smoothstep(0.35, 1.25, abs(vN));   // fade the far cards
+        gl_FragColor = vec4(col.rgb, col.a * alpha);
+      }`;
+    async function buildMeshes() {
+      meshes.forEach(m => { scene.remove(m); m.material.uniforms.uTex.value.dispose(); m.geometry.dispose(); });
+      meshes.length = 0;
+      for (let i = 0; i < items.length; i++) {
+        const tex = new THREE.CanvasTexture(await drawCard(items[i], i));
+        tex.anisotropy = 4;   // raw shader: keep texture colours as-is (no sRGB re-encode)
+        const mat = new THREE.ShaderMaterial({vertexShader: vert, fragmentShader: frag, transparent: true,
+          uniforms: {uTex: {value: tex}, uX: {value: 0}, uR: {value: R}, uVel: {value: 0}, uVert: {value: VERT ? 1 : 0}, uSize: {value: new THREE.Vector2(cw, ch)}, uRad: {value: cw*.035}}});
+        const m = new THREE.Mesh(new THREE.PlaneGeometry(cw, ch, 48, 16), mat);
+        m.frustumCulled = false; m.userData.i = i; scene.add(m); meshes.push(m);
+      }
+    }
+    function size() {
+      W = stageEl.clientWidth; H = stageEl.clientHeight;
+      renderer.setSize(W, H, false);
+      camera.aspect = W / H; camera.position.set(0, 0, (H/2) / Math.tan(THREE.MathUtils.degToRad(35/2))); camera.updateProjectionMatrix();
+      VERT = W < 1200;        // phones and tablets: vertical curved list
+      if (VERT) { cw = W < 600 ? W * .86 : Math.min(W * .78, 820); ch = cw / (16/9); gap = ch * .12; L = items.length * (ch + gap); R = Math.max(H * .7, ch * 2.4); }
+      else { ch = H * .86; cw = Math.min(ch * (16/9), W * (W < 1200 ? .7 : .48)); ch = cw / (16/9); gap = cw * .07; L = items.length * (cw + gap); R = Math.max(W * .85, cw * 2.2); }
+    }
+    size(); await buildMeshes();
+    rebuildCurve = async () => { size(); await buildMeshes(); };
+    new ResizeObserver(() => { const w = stageEl.clientWidth; if (Math.abs(w - W) > 2) rebuildCurve(); else { size(); } }).observe(stageEl);
+
+    // scroll + drag drive the strip
+    let drag = 0, cur = 0, vel = 0, dragging = false, sx = 0, moved = 0;
+    stageEl.addEventListener('pointerdown', e => { dragging = true; moved = 0; sx = e.clientX; stageEl.classList.add('dragging'); stageEl.setPointerCapture(e.pointerId); });
+    stageEl.addEventListener('pointermove', e => { if (!dragging) return; const dx = e.clientX - sx; sx = e.clientX; moved += Math.abs(dx); if (!VERT) drag -= dx * 1.2; });
+    const end = e => {
+      if (!dragging) return; dragging = false; stageEl.classList.remove('dragging');
+      if (moved < 6) {                                   // a tap: open the card under the pointer
+        const r = stageEl.getBoundingClientRect(), px = VERT ? (H/2 - (e.clientY - r.top)) : (e.clientX - r.left - W/2);
+        let best = -1, bd = 1e9;
+        meshes.forEach(m => { const u = m.material.uniforms.uX.value * (VERT ? -1 : 1); const x = R * Math.sin(u / R); const d = Math.abs(x - px); if (d < bd) { bd = d; best = m.userData.i; } });
+        if (best > -1 && bd < (VERT ? ch : cw) * .6) openIt(best);
+      }
+    };
+    stageEl.addEventListener('pointerup', end); stageEl.addEventListener('pointercancel', end);
+
+    function tick() {
+      const pr = pin.getBoundingClientRect(), span = pin.offsetHeight - innerHeight;
+      const prog = span > 0 ? Math.min(1, Math.max(0, -pr.top / span)) : 0;
+      const target = prog * (items.length - 1) * ((VERT ? ch : cw) + gap) + drag;   // ends exactly on the last card, centred
+      const prev = cur; cur += (target - cur) * .09;
+      vel += ((cur - prev) - vel) * .15;
+      const v = reduce ? 0 : Math.max(-80, Math.min(80, vel * 4));
+      const step = (VERT ? ch : cw) + gap;
+      meshes.forEach((m, i) => {
+        let x = i * step - cur; if (!VERT) { x = ((x % L) + L) % L; if (x > L/2) x -= L; }   // phones/tablets: a finite list that ends on the last meme
+        const u = m.material.uniforms; u.uX.value = x; u.uR.value = R; u.uVel.value = v; u.uVert.value = VERT ? 1 : 0; u.uSize.value.set(cw, ch); u.uRad.value = cw*.035;
+      });
+      renderer.render(scene, camera);
+      requestAnimationFrame(tick);
+    }
+    tick();
+  })();
+
+
   const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg');
-  const openIt = i => { const it = items[i]; if (!it.src) return; lbImg.src = it.src; lbImg.alt = it.c; lb.classList.add('open'); document.getElementById('lbClose').focus(); };
-  bed.addEventListener('click', e => { const g = e.target.closest('.gem'); if (g) openIt(+g.dataset.i); });
-  bed.addEventListener('keydown', e => { const g = e.target.closest('.gem'); if (g && (e.key==='Enter'||e.key===' ')) { e.preventDefault(); openIt(+g.dataset.i); } });
+  const SITE = 'https://tayanna.github.io/frog-with-hat/';           // live site: X reads the card from here
+  const SHARE_TEXT = 'One frok, many hats 🐸🎩';
+  function openIt(i) {
+    const n = String(i + 1).padStart(2, '0'), img = 'assets/memes/' + n + '.jpg';
+    lbImg.src = img; lbImg.alt = (items[i] && items[i].c) || 'Meme';
+    document.getElementById('shareX').href = 'https://x.com/intent/post?text=' + encodeURIComponent(SHARE_TEXT) + '&url=' + encodeURIComponent(SITE + 'm/' + n + '.html');
+    lb.classList.add('open'); document.getElementById('lbClose').focus();
+  }
   const close = () => lb.classList.remove('open');
   document.getElementById('lbClose').addEventListener('click', close);
   lb.addEventListener('click', e => { if (e.target === lb) close(); });
